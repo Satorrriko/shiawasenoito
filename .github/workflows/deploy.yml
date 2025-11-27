@@ -31,14 +31,12 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dir: ./web/shiawasenoito/node_modules
+          cache-dir: ./node_modules
 
       - name: Install dependencies
-        working-directory: ./web/shiawasenoito
         run: npm ci
 
       - name: Build
-        working-directory: ./web/shiawasenoito
         run: npm run build
 
       - name: Setup Pages
@@ -47,9 +45,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './web/shiawasenoito/dist'
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
